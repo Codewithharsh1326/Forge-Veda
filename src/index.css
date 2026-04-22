@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ForgeVeda Design System - Dark, Premium, Engineering-First */
+
+@layer base {
+  :root {
+    font-size: 14px;
+    /* Scale down UI */
+    --background: 220 15% 6%;
+    --foreground: 220 10% 92%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 220 10% 92%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 220 10% 92%;
+
+    --primary: 185 75% 48%;
+    --primary-foreground: 220 15% 6%;
+
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 220 10% 85%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 185 75% 48%;
+    --accent-foreground: 220 15% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 220 10% 92%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 220 15% 6%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 15% 6%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 14%;
+    --ring: 185 75% 48%;
+
+    --radius: 0.5rem;
+
+    /* Custom ForgeVeda tokens */
+    --glow-primary: 185 75% 48%;
+    --surface-glass: 220 15% 12%;
+    --surface-elevated: 220 15% 14%;
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(220 20% 4%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(185 75% 48%) 0%, hsl(200 80% 40%) 100%);
+    --shadow-glow: 0 0 60px -15px hsl(185 75% 48% / 0.3);
+    --shadow-card: 0 4px 24px -8px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 220 10% 85%;
+    --sidebar-primary: 185 75% 48%;
+    --sidebar-primary-foreground: 220 15% 6%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 220 10% 92%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 185 75% 48%;
+  }
+
+  .dark {
+    --background: 220 15% 6%;
+    --foreground: 220 10% 92%;
+    --card: 220 15% 10%;
+    --card-foreground: 220 10% 92%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 220 10% 92%;
+    --primary: 185 75% 48%;
+    --primary-foreground: 220 15% 6%;
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 220 10% 85%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 185 75% 48%;
+    --accent-foreground: 220 15% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 220 10% 92%;
+    --border: 220 15% 18%;
+    --input: 220 15% 14%;
+    --ring: 185 75% 48%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 220 10% 85%;
+    --sidebar-primary: 185 75% 48%;
+    --sidebar-primary-foreground: 220 15% 6%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 220 10% 92%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 185 75% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    font-size: 13px;
+    /* Reduced from 14px */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-semibold;
+  }
+
+  code,
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-panel-elevated {
+    @apply bg-card/90 backdrop-blur-2xl border border-border/60 rounded-xl;
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .node-graph-bg {
+    background-image:
+      radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground) / 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .circuit-line {
+    @apply bg-primary/20;
+    height: 1px;
+  }
+
+  .status-indicator {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-indicator-success {
+    @apply status-indicator bg-success;
+    box-shadow: 0 0 8px hsl(var(--success) / 0.6);
+  }
+
+  .status-indicator-warning {
+    @apply status-indicator bg-warning;
+    box-shadow: 0 0 8px hsl(var(--warning) / 0.6);
+  }
+
+  .status-indicator-error {
+    @apply status-indicator bg-destructive;
+    box-shadow: 0 0 8px hsl(var(--destructive) / 0.6);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glowPulse {
+
+    0%,
+    100% {
+      box-shadow: 0 0 30px -10px hsl(var(--primary) / 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 50px -10px hsl(var(--primary) / 0.6);
+    }
+  }
+}
